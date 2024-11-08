@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\Trabalho\\ProjetoDAAW\\ProjetoDAAW\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3227ABA0-44EB-483F-856D-35607E047E47}|WebApplication1\\WebApplication1.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalho\\projetodaaw\\projetodaaw\\webapplication1\\models\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3227ABA0-44EB-483F-856D-35607E047E47}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Genero.cs",
+              "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\Trabalho\\ProjetoDAAW\\ProjetoDAAW\\WebApplication1\\Models\\Genero.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Genero.cs",
+              "ToolTip": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\Trabalho\\ProjetoDAAW\\ProjetoDAAW\\WebApplication1\\Models\\Genero.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Genero.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T13:54:27.185Z",
+              "EditorCaption": ""
             }
           ]
         }
