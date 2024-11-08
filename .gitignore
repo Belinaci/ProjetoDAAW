@@ -1,3 +1,5 @@
+# arquivos temporários de compilação
 *.vsidx
 ProjetoDAAW/WebApplication1/obj/
 ProjetoDAAW/.vs
+ProjetoDAAW/bin
