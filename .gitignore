@@ -1,7 +1,7 @@
 *.vsidx
-ProjetoDAAW/ProjetoDAAW/obj/
-.vs
-bin
-.github
+ProjetoDAAW/obj/
+.vs/
+ProjetoDAAW/bin/
+.github/
 
 
