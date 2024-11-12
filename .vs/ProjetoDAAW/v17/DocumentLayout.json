@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\models\\filme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\models\\filme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\models\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\models\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +22,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Genero.cs",
+              "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Genero.cs",
+              "RelativeDocumentMoniker": "ProjetoDAAW\\Models\\Genero.cs",
+              "ToolTip": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Genero.cs",
+              "RelativeToolTip": "ProjetoDAAW\\Models\\Genero.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:15:00.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Artista.cs",
+              "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Artista.cs",
+              "RelativeDocumentMoniker": "ProjetoDAAW\\Models\\Artista.cs",
+              "ToolTip": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Artista.cs",
+              "RelativeToolTip": "ProjetoDAAW\\Models\\Artista.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:12:01.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Filme.cs",
+              "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Filme.cs",
+              "RelativeDocumentMoniker": "ProjetoDAAW\\Models\\Filme.cs",
+              "ToolTip": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Filme.cs",
+              "RelativeToolTip": "ProjetoDAAW\\Models\\Filme.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T11:04:39.813Z",
+              "EditorCaption": ""
             }
           ]
         }
