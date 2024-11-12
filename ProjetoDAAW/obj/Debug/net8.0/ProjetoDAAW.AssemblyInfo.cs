@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjetoDAAW")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7478189733013d092fa29a3371d2c6e9135c81ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f78cb8edfe760a6812b510ad1cd840ae4b4ed7f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjetoDAAW")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjetoDAAW")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Data\\Migrations\\20241112145408_Inicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ProjetoDAAW\\Data\\Migrations\\20241112145408_Inicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\models\\filme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\models\\filme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\models\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\models\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\controllers\\artistascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,16 +27,8 @@
       "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\controllers\\filmescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\models\\filme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\models\\filme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\models\\artista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|c:\\users\\\u00E1gape\\documents\\pessoal\\facul\\daaw\\trabalhodaaw\\projetodaaw\\projetodaaw\\models\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4F5EE76-500F-4ECB-AF7C-945FDFF38D9C}|ProjetoDAAW\\ProjetoDAAW.csproj|solutionrelative:projetodaaw\\models\\genero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,19 +47,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "20241112145408_Inicial.cs",
+              "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Data\\Migrations\\20241112145408_Inicial.cs",
+              "RelativeDocumentMoniker": "ProjetoDAAW\\Data\\Migrations\\20241112145408_Inicial.cs",
+              "ToolTip": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Data\\Migrations\\20241112145408_Inicial.cs",
+              "RelativeToolTip": "ProjetoDAAW\\Data\\Migrations\\20241112145408_Inicial.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T14:54:08.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ArtistasController.cs",
               "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Controllers\\ArtistasController.cs",
               "RelativeDocumentMoniker": "ProjetoDAAW\\Controllers\\ArtistasController.cs",
               "ToolTip": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Controllers\\ArtistasController.cs",
               "RelativeToolTip": "ProjetoDAAW\\Controllers\\ArtistasController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAwwJEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-12T11:31:07.531Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "GenerosController.cs",
               "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Controllers\\GenerosController.cs",
               "RelativeDocumentMoniker": "ProjetoDAAW\\Controllers\\GenerosController.cs",
@@ -63,12 +80,11 @@
               "RelativeToolTip": "ProjetoDAAW\\Controllers\\GenerosController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T11:29:23.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T11:29:23.75Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "FilmesController.cs",
               "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Controllers\\FilmesController.cs",
               "RelativeDocumentMoniker": "ProjetoDAAW\\Controllers\\FilmesController.cs",
@@ -76,12 +92,11 @@
               "RelativeToolTip": "ProjetoDAAW\\Controllers\\FilmesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T11:27:22.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T11:27:22.714Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Genero.cs",
               "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Genero.cs",
               "RelativeDocumentMoniker": "ProjetoDAAW\\Models\\Genero.cs",
@@ -89,11 +104,12 @@
               "RelativeToolTip": "ProjetoDAAW\\Models\\Genero.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T11:15:00.482Z"
+              "WhenOpened": "2024-11-12T11:15:00.482Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Artista.cs",
               "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Artista.cs",
               "RelativeDocumentMoniker": "ProjetoDAAW\\Models\\Artista.cs",
@@ -105,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Filme.cs",
               "DocumentMoniker": "C:\\Users\\\u00C1gape\\Documents\\Pessoal\\Facul\\DAAW\\TrabalhoDAAW\\ProjetoDAAW\\ProjetoDAAW\\Models\\Filme.cs",
               "RelativeDocumentMoniker": "ProjetoDAAW\\Models\\Filme.cs",
