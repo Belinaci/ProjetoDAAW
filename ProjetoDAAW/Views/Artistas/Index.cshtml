@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Pais)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FtArtista)
+                <img src="@item.FtArtista" height="120" />
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
