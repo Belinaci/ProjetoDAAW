@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using ProjetoDAAW.Data;
 using ProjetoDAAW.Models;
@@ -56,13 +57,26 @@ namespace ProjetoDAAW.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,DtNascimento,Pais,FtArtista")] Artista artista)
         {
+            // Remove a validação da propriedade 'Filme' pq esquecemos do "?" quando foi criar a list<>
+            ModelState.Remove("Filme");
+
             if (ModelState.IsValid)
             {
                 _context.Add(artista);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // Tratativa de Erro
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                Console.WriteLine("ModelState errors: " + string.Join(", ", errors));
+            }
+
             return View(artista);
+
+
         }
 
         // GET: Artistas/Edit/5

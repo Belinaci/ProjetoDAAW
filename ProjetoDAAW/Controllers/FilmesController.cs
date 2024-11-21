@@ -22,6 +22,12 @@ namespace ProjetoDAAW.Controllers
         // GET: Filmes
         public async Task<IActionResult> Index()
         {
+            // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
+            var filmes = await _context.Filme
+                .Include(f => f.Genero)    
+                .Include(f => f.Artista)   
+                .ToListAsync();
+
             return View(await _context.Filme.ToListAsync());
         }
 
@@ -33,7 +39,10 @@ namespace ProjetoDAAW.Controllers
                 return NotFound();
             }
 
+            // lazy loading maldito
             var filme = await _context.Filme
+                .Include(f => f.Genero)  
+                .Include(f => f.Artista) 
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filme == null)
             {
@@ -46,24 +55,52 @@ namespace ProjetoDAAW.Controllers
         // GET: Filmes/Create
         public IActionResult Create()
         {
+            // Traz a lista de Gêneros e Artistas
+            ViewBag.Genero = new MultiSelectList(_context.Genero, "Id", "Nome");
+            ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
             return View();
         }
 
         // POST: Filmes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,GeneroId,DtLancamento,ArtistaId,Diretor,FtCapaFilme")] Filme filme)
+        public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,DtLancamento,Diretor,FtCapaFilme")] Filme filme, int[] generoSelecionados, int[] artistaSelecionados)
         {
+            // remove validação de Genero e Artista pq a gente esqueceu de adicionar o "?" na list<>
+            ModelState.Remove("Genero");
+            ModelState.Remove("Artista");
+
             if (ModelState.IsValid)
             {
+                // Adiciona os gêneros selecionados à lista de gêneros do filme
+                if (generoSelecionados != null && generoSelecionados.Length > 0)
+                {
+                    filme.Genero = _context.Genero
+                        .Where(g => generoSelecionados.Contains(g.Id))
+                        .ToList();
+                }
+
+                // Adiciona os artistas selecionados à lista de artistas do filme
+                if (artistaSelecionados != null && artistaSelecionados.Length > 0)
+                {
+                    filme.Artista = _context.Artista
+                        .Where(a => artistaSelecionados.Contains(a.Id))
+                        .ToList();
+                }
+
+                // Salva o filme no banco de dados
                 _context.Add(filme);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // Se o modelo não for válido, repopula as listas de gêneros e artistas
+            ViewBag.Genero = new MultiSelectList(_context.Genero, "Id", "Nome");
+            ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
             return View(filme);
         }
+
+
 
         // GET: Filmes/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -73,11 +110,21 @@ namespace ProjetoDAAW.Controllers
                 return NotFound();
             }
 
-            var filme = await _context.Filme.FindAsync(id);
+            // O FindAsync precisa ser substituído, ele não é feito para listas, portanto não carrega corretamente
+            var filme = await _context.Filme
+                .Include(f => f.Genero)  
+                .Include(f => f.Artista) 
+                .FirstOrDefaultAsync(f => f.Id == id);
+
             if (filme == null)
             {
                 return NotFound();
             }
+
+            // carrega e seleciona os gêneros e atores de cada filme
+            ViewBag.Genero = new MultiSelectList(_context.Genero, "Id", "Nome", filme.Genero.Select(g => g.Id));
+            ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome", filme.Artista.Select(a => a.Id));
+
             return View(filme);
         }
 
@@ -86,8 +133,12 @@ namespace ProjetoDAAW.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descricao,GeneroId,DtLancamento,ArtistaId,Diretor,FtCapaFilme")] Filme filme)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descricao,GeneroId,DtLancamento,ArtistaId,Diretor,FtCapaFilme")] Filme filme, int[] generoSelecionados, int[] artistaSelecionados)
         {
+            // remove validação de Genero e Artista pq a gente esqueceu de adicionar o "?" na list<>
+            ModelState.Remove("Genero");
+            ModelState.Remove("Artista");
+
             if (id != filme.Id)
             {
                 return NotFound();
@@ -97,7 +148,32 @@ namespace ProjetoDAAW.Controllers
             {
                 try
                 {
-                    _context.Update(filme);
+                    // Carrega o filme existente do banco, isso é necessário pois o filme existe apenas na memória e não está sendo rastreado pelo EF
+                    var filmeExistente = await _context.Filme
+                        .Include(f => f.Genero)
+                        .Include(f => f.Artista)
+                        .FirstOrDefaultAsync(f => f.Id == id);
+
+
+                    // Atualiza os campos do filme
+                    filmeExistente.Titulo = filme.Titulo;
+                    filmeExistente.Descricao = filme.Descricao;
+                    filmeExistente.DtLancamento = filme.DtLancamento;
+                    filmeExistente.Diretor = filme.Diretor;
+                    filmeExistente.FtCapaFilme = filme.FtCapaFilme;
+
+                    // É necessário outro procedimento para Gênero e Artista por conta da relação muitos para muitos.
+                    filmeExistente.Genero = _context.Genero
+                        .Where(g => generoSelecionados.Contains(g.Id))
+                        .ToList();
+
+                    
+                    filmeExistente.Artista = _context.Artista
+                        .Where(a => artistaSelecionados.Contains(a.Id))
+                        .ToList();
+
+                    // Salva no banco de dados
+                    _context.Update(filmeExistente);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -113,6 +189,11 @@ namespace ProjetoDAAW.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            // Repopula as listas de gêneros e artistas no caso de falha de validação
+            ViewBag.Genero = new MultiSelectList(_context.Genero, "Id", "Nome", generoSelecionados);
+            ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome", artistaSelecionados);
+
             return View(filme);
         }
 
@@ -125,6 +206,8 @@ namespace ProjetoDAAW.Controllers
             }
 
             var filme = await _context.Filme
+                .Include(f => f.Genero)  
+                .Include(f => f.Artista)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filme == null)
             {

@@ -19,5 +19,7 @@ namespace ProjetoDAAW.Models
         [Required]
         [DataType(DataType.Url)]
         public string FtArtista { get; set; }
+
+        public List<Filme> Filme { get; set; }
     }
 }

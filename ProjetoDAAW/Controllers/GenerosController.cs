@@ -56,13 +56,25 @@ namespace ProjetoDAAW.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome")] Genero genero)
         {
+            // Remove a validação da propriedade 'Filme' pq esquecemos do "?" quando foi criar a list<>
+            ModelState.Remove("Filme");
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(genero);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // botão de submit é uma vadia
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                Console.WriteLine("ModelState errors: " + string.Join(", ", errors));
+            }
             return View(genero);
+
         }
 
         // GET: Generos/Edit/5

@@ -19,13 +19,13 @@
                 @Html.DisplayNameFor(model => model.Descricao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GeneroId)
+                Gêneros
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DtLancamento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ArtistaId)
+                Atores
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Diretor)
@@ -46,19 +46,27 @@
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GeneroId)
+                @foreach (var genero in item.Genero)
+                {
+                      <span>@genero.Nome</span>
+                      <br />
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DtLancamento)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ArtistaId)
+                @foreach (var artista in item.Artista)
+                {
+                      <span>@artista.Nome</span>
+                      <br />
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Diretor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FtCapaFilme)
+                <img src="@item.FtCapaFilme" height="120" />
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
