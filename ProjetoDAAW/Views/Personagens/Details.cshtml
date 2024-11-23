@@ -1,0 +1,36 @@
+﻿@model ProjetoDAAW.Models.Personagem
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Personagem</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Prsnag)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Prsnag)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FilmeId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FilmeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ArtistaId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ArtistaId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

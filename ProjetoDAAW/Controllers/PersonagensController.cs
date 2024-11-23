@@ -4,43 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using ProjetoDAAW.Data;
 using ProjetoDAAW.Models;
 
 namespace ProjetoDAAW.Controllers
 {
-    public class ArtistasController : Controller
+    public class PersonagensController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ArtistasController(ApplicationDbContext context)
+        public PersonagensController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Artistas
-        public async Task<IActionResult> Index(string Filtro)
+        // GET: Personagens
+        public async Task<IActionResult> Index()
         {
-
-            List<Artista> artistas;
-
-            if (Filtro != null)
-            {
-                // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
-                artistas = await _context.Artista.Where(p => p.Nome.Contains(Filtro)).ToListAsync();
-            }
-            else
-            {
-                // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
-                artistas = await _context.Artista.ToListAsync();
-            }
-
-            return View(artistas);
+            return View(await _context.Personagem.ToListAsync());
         }
 
-        // GET: Artistas/Details/5
+        // GET: Personagens/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,52 +33,46 @@ namespace ProjetoDAAW.Controllers
                 return NotFound();
             }
 
-            var artista = await _context.Artista
+            var personagem = await _context.Personagem
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (artista == null)
+            if (personagem == null)
             {
                 return NotFound();
             }
 
-            return View(artista);
+            return View(personagem);
         }
 
-        // GET: Artistas/Create
+        // GET: Personagens/Create
         public IActionResult Create()
         {
+            ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Nome");
+            ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
             return View();
         }
 
-        // POST: Artistas/Create
+        // POST: Personagens/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,DtNascimento,Pais,FtArtista")] Artista artista)
+        public async Task<IActionResult> Create([Bind("Id,Prsnag,FilmeId,ArtistaId")] Personagem personagem, int[] filmeSelecionados, int[] artistaSelecionados)
         {
-            // Remove a validação da propriedade 'Filme' pq esquecemos do "?" quando foi criar a list<>
-            ModelState.Remove("Filme");
-
             if (ModelState.IsValid)
             {
-                _context.Add(artista);
+                // Adiciona os gêneros selecionados à lista de gêneros do filme
+
+                _context.Add(personagem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
-            // Tratativa de Erro
-            if (!ModelState.IsValid)
-            {
-                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-                Console.WriteLine("ModelState errors: " + string.Join(", ", errors));
-            }
-
-            return View(artista);
-
-
+            ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Nome");
+            ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
+            return View(personagem);
         }
 
-        // GET: Artistas/Edit/5
+        // GET: Personagens/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -101,22 +80,22 @@ namespace ProjetoDAAW.Controllers
                 return NotFound();
             }
 
-            var artista = await _context.Artista.FindAsync(id);
-            if (artista == null)
+            var personagem = await _context.Personagem.FindAsync(id);
+            if (personagem == null)
             {
                 return NotFound();
             }
-            return View(artista);
+            return View(personagem);
         }
 
-        // POST: Artistas/Edit/5
+        // POST: Personagens/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,DtNascimento,Pais,FtArtista")] Artista artista)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Prsnag,FilmeId,ArtistaId")] Personagem personagem)
         {
-            if (id != artista.Id)
+            if (id != personagem.Id)
             {
                 return NotFound();
             }
@@ -125,12 +104,12 @@ namespace ProjetoDAAW.Controllers
             {
                 try
                 {
-                    _context.Update(artista);
+                    _context.Update(personagem);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ArtistaExists(artista.Id))
+                    if (!PersonagemExists(personagem.Id))
                     {
                         return NotFound();
                     }
@@ -141,10 +120,10 @@ namespace ProjetoDAAW.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(artista);
+            return View(personagem);
         }
 
-        // GET: Artistas/Delete/5
+        // GET: Personagens/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -152,34 +131,34 @@ namespace ProjetoDAAW.Controllers
                 return NotFound();
             }
 
-            var artista = await _context.Artista
+            var personagem = await _context.Personagem
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (artista == null)
+            if (personagem == null)
             {
                 return NotFound();
             }
 
-            return View(artista);
+            return View(personagem);
         }
 
-        // POST: Artistas/Delete/5
+        // POST: Personagens/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var artista = await _context.Artista.FindAsync(id);
-            if (artista != null)
+            var personagem = await _context.Personagem.FindAsync(id);
+            if (personagem != null)
             {
-                _context.Artista.Remove(artista);
+                _context.Personagem.Remove(personagem);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ArtistaExists(int id)
+        private bool PersonagemExists(int id)
         {
-            return _context.Artista.Any(e => e.Id == id);
+            return _context.Personagem.Any(e => e.Id == id);
         }
     }
 }
