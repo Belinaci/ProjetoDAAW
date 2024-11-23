@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoDAAW.Data;
 
@@ -11,9 +12,11 @@ using ProjetoDAAW.Data;
 namespace ProjetoDAAW.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241121225648_Personagem")]
+    partial class Personagem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -357,10 +360,6 @@ namespace ProjetoDAAW.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtistaId");
-
-                    b.HasIndex("FilmeId");
-
                     b.ToTable("Personagem");
                 });
 
@@ -443,25 +442,6 @@ namespace ProjetoDAAW.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ProjetoDAAW.Models.Personagem", b =>
-                {
-                    b.HasOne("ProjetoDAAW.Models.Artista", "Artista")
-                        .WithMany()
-                        .HasForeignKey("ArtistaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProjetoDAAW.Models.Filme", "Filme")
-                        .WithMany()
-                        .HasForeignKey("FilmeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Artista");
-
-                    b.Navigation("Filme");
                 });
 #pragma warning restore 612, 618
         }

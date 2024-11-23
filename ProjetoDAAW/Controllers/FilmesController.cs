@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using ProjetoDAAW.Data;
 using ProjetoDAAW.Models;
 
@@ -20,15 +21,34 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Filmes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string Filtro)
         {
-            // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
-            var filmes = await _context.Filme
-                .Include(f => f.Genero)    
-                .Include(f => f.Artista)   
-                .ToListAsync();
 
-            return View(await _context.Filme.ToListAsync());
+            List<Filme> filmes;
+
+            if (Filtro != null) 
+            {
+                // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
+                    filmes = await _context.Filme
+                    .Where(p=> (p.Titulo.Contains(Filtro) || p.Descricao.Contains(Filtro)) || p.Genero.Any(g => g.Nome.Contains(Filtro)))
+                    .Include(f => f.Genero)
+                    .Include(f => f.Artista)
+                    .ToListAsync();
+            }
+            else
+            {
+                // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
+                    filmes = await _context.Filme
+                    .Include(f => f.Genero) // Inclui os gêneros relacionados
+                    .Include(f => f.Artista) // Inclui os Artistas relacionados
+                    .ToListAsync();
+            }
+
+            var generos = _context.Genero.ToList();
+            ViewData["Generos"] = new SelectList(generos, "Id", "Nome");
+
+
+            return View(filmes);
         }
 
         // GET: Filmes/Details/5
@@ -42,7 +62,7 @@ namespace ProjetoDAAW.Controllers
             // lazy loading maldito
             var filme = await _context.Filme
                 .Include(f => f.Genero)  
-                .Include(f => f.Artista) 
+                .Include(f => f.Artista)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filme == null)
             {

@@ -4,11 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Filmes</h1>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crie seu Novo Filme</a>
 </p>
+<div class="row justify-content-center">
+    <div class="mt-2 col-md-4" text-center>
+        <form asp-action="Index" method="get">
+            <input name="Filtro" class="form-control" type="text" placeholder="Filtro" />
+            <input class="btn btn-outline-danger col-12 mt-2" type="submit" value="Filtrar" />
+        </form>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -46,21 +54,35 @@
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
             <td>
-                @foreach (var genero in item.Genero)
-                {
-                      <span>@genero.Nome</span>
-                      <br />
-                }
+                    @if (item.Genero != null)
+                    {
+                        foreach (var genero in item.Genero)
+                        {
+                            <span>@genero.Nome</span>
+                        }
+                    }
+                    else
+                    {
+                        <span>Sem gênero associado</span>
+                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DtLancamento)
             </td>
             <td>
-                @foreach (var artista in item.Artista)
-                {
-                      <span>@artista.Nome</span>
-                      <br />
-                }
+                    @if (item.Artista != null)
+                    {
+                        @foreach (var artista in item.Artista)
+                        {
+                            <span>@artista.Nome</span>
+                            <br />
+                        }
+                    }
+                    else
+                    {
+                        <span>Sem Artista associado</span>
+                    }
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Diretor)

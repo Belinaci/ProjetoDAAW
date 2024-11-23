@@ -12,13 +12,13 @@ namespace ProjetoDAAW.Models
         [Required]
         public string Descricao { get; set; }
         public int GeneroId { get; set; }
-        public List<Genero> Genero { get; set; }
+        public List<Genero>? Genero { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         public DateTime DtLancamento { get; set; }
         public int ArtistaId { get; set; }
-        public List<Artista> Artista { get; set; }
+        public List<Artista>? Artista { get; set; }
 
         [Required]
         public string Diretor { get; set; }
