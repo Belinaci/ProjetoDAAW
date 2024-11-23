@@ -1,47 +1,38 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.EntityFrameworkCore;
 using ProjetoDAAW.Data;
 using ProjetoDAAW.Models;
 
 namespace ProjetoDAAW.Controllers
 {
-    public class PersonagensController : Controller
+    public class ContatosController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public PersonagensController(ApplicationDbContext context)
+        public ContatosController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Personagens
-        public async Task<IActionResult> Index(string Filtro)
+        // GET: Contatos7
+        public async Task<IActionResult> Index()
         {
-            List<Personagem> personagens;
-
-            if (Filtro != null)
-            {
-                // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
-                personagens = await _context.Personagem
-                .Where(p => p.Prsnag.Contains(Filtro)).ToListAsync();
-            }
-            else
-            {
-                // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
-                personagens = await _context.Personagem.ToListAsync();
-            }
-
-
-            return View(personagens);
+            return View(await _context.Contato.ToListAsync());
         }
 
-        // GET: Personagens/Details/5
+        [Authorize]
+        public async Task<IActionResult> Admin()
+        {
+            return View(await _context.Contato.ToListAsync());
+        }
+
+        // GET: Contatos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,46 +40,39 @@ namespace ProjetoDAAW.Controllers
                 return NotFound();
             }
 
-            var personagem = await _context.Personagem
+            var contato = await _context.Contato
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (personagem == null)
+            if (contato == null)
             {
                 return NotFound();
             }
 
-            return View(personagem);
+            return View(contato);
         }
 
-        // GET: Personagens/Create
+        // GET: Contatos/Create
         public IActionResult Create()
         {
-            ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Nome");
-            ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
             return View();
         }
 
-        // POST: Personagens/Create
+        // POST: Contatos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Prsnag,FilmeId,ArtistaId")] Personagem personagem, int[] filmeSelecionados, int[] artistaSelecionados)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Mensagem")] Contato contato)
         {
             if (ModelState.IsValid)
             {
-                // Adiciona os gêneros selecionados à lista de gêneros do filme
-
-                _context.Add(personagem);
+                _context.Add(contato);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
-            ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Nome");
-            ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
-            return View(personagem);
+            return View(contato);
         }
 
-        // GET: Personagens/Edit/5
+        // GET: Contatos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,22 +80,22 @@ namespace ProjetoDAAW.Controllers
                 return NotFound();
             }
 
-            var personagem = await _context.Personagem.FindAsync(id);
-            if (personagem == null)
+            var contato = await _context.Contato.FindAsync(id);
+            if (contato == null)
             {
                 return NotFound();
             }
-            return View(personagem);
+            return View(contato);
         }
 
-        // POST: Personagens/Edit/5
+        // POST: Contatos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Prsnag,FilmeId,ArtistaId")] Personagem personagem)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Mensagem")] Contato contato)
         {
-            if (id != personagem.Id)
+            if (id != contato.Id)
             {
                 return NotFound();
             }
@@ -120,12 +104,12 @@ namespace ProjetoDAAW.Controllers
             {
                 try
                 {
-                    _context.Update(personagem);
+                    _context.Update(contato);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PersonagemExists(personagem.Id))
+                    if (!ContatoExists(contato.Id))
                     {
                         return NotFound();
                     }
@@ -136,10 +120,10 @@ namespace ProjetoDAAW.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(personagem);
+            return View(contato);
         }
 
-        // GET: Personagens/Delete/5
+        // GET: Contatos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,34 +131,34 @@ namespace ProjetoDAAW.Controllers
                 return NotFound();
             }
 
-            var personagem = await _context.Personagem
+            var contato = await _context.Contato
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (personagem == null)
+            if (contato == null)
             {
                 return NotFound();
             }
 
-            return View(personagem);
+            return View(contato);
         }
 
-        // POST: Personagens/Delete/5
+        // POST: Contatos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var personagem = await _context.Personagem.FindAsync(id);
-            if (personagem != null)
+            var contato = await _context.Contato.FindAsync(id);
+            if (contato != null)
             {
-                _context.Personagem.Remove(personagem);
+                _context.Contato.Remove(contato);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PersonagemExists(int id)
+        private bool ContatoExists(int id)
         {
-            return _context.Personagem.Any(e => e.Id == id);
+            return _context.Contato.Any(e => e.Id == id);
         }
     }
 }

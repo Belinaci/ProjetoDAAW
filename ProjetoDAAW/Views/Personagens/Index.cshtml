@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div class="row justify-content-center">
+    <div class="mt-2 col-md-4" text-center>
+        <form asp-action="Index" method="get">
+            <input name="Filtro" class="form-control" type="text" placeholder="Filtro" />
+            <input class="btn btn-outline-danger col-12 mt-2" type="submit" value="Filtrar" />
+        </form>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -25,17 +33,17 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prsnag)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilmeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArtistaId)
-            </td>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prsnag)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FilmeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.ArtistaId)
+                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
