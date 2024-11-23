@@ -14,5 +14,6 @@ namespace ProjetoDAAW.Data
         public DbSet<ProjetoDAAW.Models.Genero> Genero { get; set; } = default!;
         public DbSet<ProjetoDAAW.Models.Artista> Artista { get; set; } = default!;
         public DbSet<ProjetoDAAW.Models.Personagem> Personagem { get; set; } = default!;
+        public DbSet<ProjetoDAAW.Models.Contato> Contato { get; set; } = default!;
     }
 }
