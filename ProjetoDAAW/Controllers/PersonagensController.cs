@@ -29,12 +29,18 @@ namespace ProjetoDAAW.Controllers
             {
                 // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
                 personagens = await _context.Personagem
-                .Where(p => p.Prsnag.Contains(Filtro)).ToListAsync();
+                .Where(p => p.Prsnag.Contains(Filtro))
+                .Include(p => p.Filme)
+                .Include(p => p.Artista)
+                .ToListAsync();
             }
             else
             {
                 // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
-                personagens = await _context.Personagem.ToListAsync();
+                personagens = await _context.Personagem
+                .Include(p => p.Filme)
+                .Include(p => p.Artista)
+                .ToListAsync();
             }
 
 
@@ -50,6 +56,8 @@ namespace ProjetoDAAW.Controllers
             }
 
             var personagem = await _context.Personagem
+                .Include(p => p.Filme)
+                .Include(p => p.Artista)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (personagem == null)
             {
@@ -62,7 +70,7 @@ namespace ProjetoDAAW.Controllers
         // GET: Personagens/Create
         public IActionResult Create()
         {
-            ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Nome");
+            ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Titulo");
             ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
             return View();
         }
@@ -72,18 +80,34 @@ namespace ProjetoDAAW.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Prsnag,FilmeId,ArtistaId")] Personagem personagem, int[] filmeSelecionados, int[] artistaSelecionados)
+        public async Task<IActionResult> Create([Bind("Id,Prsnag")] Personagem personagem, int[] filmeSelecionados, int[] artistaSelecionados)
         {
+
+            ModelState.Remove("Filme");
+            ModelState.Remove("Artista");
+
             if (ModelState.IsValid)
             {
-                // Adiciona os gêneros selecionados à lista de gêneros do filme
+                if (filmeSelecionados != null && filmeSelecionados.Length > 0)
+                {
+                    personagem.Filme = _context.Filme
+                        .Where(f => filmeSelecionados.Contains(f.Id))
+                        .FirstOrDefault();
+                }
+
+                if (artistaSelecionados != null && artistaSelecionados.Length > 0)
+                {
+                    personagem.Artista = _context.Artista
+                        .Where(a => artistaSelecionados.Contains(a.Id))
+                        .FirstOrDefault();
+                }
 
                 _context.Add(personagem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Nome");
+            ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Titulo");
             ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
             return View(personagem);
         }

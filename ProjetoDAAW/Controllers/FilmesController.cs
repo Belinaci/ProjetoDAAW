@@ -44,10 +44,6 @@ namespace ProjetoDAAW.Controllers
                     .ToListAsync();
             }
 
-            var generos = _context.Genero.ToList();
-            ViewData["Generos"] = new SelectList(generos, "Id", "Nome");
-
-
             return View(filmes);
         }
 
@@ -63,6 +59,7 @@ namespace ProjetoDAAW.Controllers
             var filme = await _context.Filme
                 .Include(f => f.Genero)  
                 .Include(f => f.Artista)
+                .Include(f=> f.Personagem)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filme == null)
             {

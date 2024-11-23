@@ -48,6 +48,16 @@
                 <br />
             }
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Personagem)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var personagem in Model.Personagem)
+            {
+                <span>@personagem.Prsnag</span>
+                <br />
+            }
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Diretor)
         </dt>

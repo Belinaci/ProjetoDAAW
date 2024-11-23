@@ -20,6 +20,8 @@ namespace ProjetoDAAW.Models
         public int ArtistaId { get; set; }
         public List<Artista>? Artista { get; set; }
 
+        public List<Personagem>? Personagem { get; set; }
+
         [Required]
         public string Diretor { get; set; }
 
