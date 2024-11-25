@@ -23,6 +23,7 @@ namespace ProjetoDAAW.Controllers
             var filmes = await _context.Filme
                                         .Include(f => f.Genero)
                                         .Include(f => f.Artista)
+                                        .Include(f => f.Personagem)
                                         .OrderByDescending(f => f.Id) // Supondo que você tem um campo DataAdicionado
                                         .Take(10) // Pegando os 10 mais recentes
                                         .ToListAsync();

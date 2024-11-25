@@ -13,32 +13,26 @@
     @foreach (var filme in Model)
     {
         <div class="film-item" style="display: flex; align-items: center; margin-bottom: 20px;">
-            <!-- Imagem do filme à esquerda -->
-            <img src="@filme.FtCapaFilme" alt="@filme.Titulo" class="film-cover" style="width: 300px; height: auto; margin-right: 20px;" />
+            <!-- Imagem do filme à esquerda, clicável -->
+            <a asp-controller="Filmes" asp-action="Details" asp-route-id="@filme.Id">
+                <img src="@filme.FtCapaFilme" alt="@filme.Titulo" class="film-cover" style="width: 300px; height: auto; margin-right: 20px;" />
+            </a>
 
             <!-- Detalhes do filme à direita da imagem -->
             <div class="film-details" style="flex: 1;">
                 <h3>@filme.Titulo</h3>
                 <p><strong>Data de Lançamento:</strong> @filme.DtLancamento.ToString("dd/MM/yyyy")</p>
-                <p><strong>Diretor:</strong> @filme.Diretor</p>
 
-                <p><strong>Gêneros:</strong></p>
-                <ul>
+                <p>
+                    <strong>Gêneros:</strong>
                     @foreach (var genero in filme.Genero)
                     {
-                        <li>@genero.Nome</li>
+                        <span>@genero.Nome</span>
+                        @(genero != filme.Genero.Last() ? ", " : "")
                     }
-                </ul>
+                </p>
 
-                <p><strong>Artistas:</strong></p>
-                <ul>
-                    @foreach (var artista in filme.Artista)
-                    {
-                        <li>@artista.Nome</li>
-                    }
-                </ul>
-
-                <p>@filme.Descricao</p>
+                <p><strong>Sinopse:</strong> @filme.Descricao</p>
             </div>
         </div>
     }
