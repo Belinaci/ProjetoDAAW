@@ -1,8 +1,45 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Filme>
+
+@{
+    ViewData["Title"] = "Catalogo de Filmes";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center" style="margin-bottom: 20px;">
+    <h1 class="display-4">Filmes em Cartaz</h1>
+    <p>Veja os últimos filmes adicionados para exibição</p>
+</div>
+
+<div class="film-list">
+    @foreach (var filme in Model)
+    {
+        <div class="film-item" style="display: flex; align-items: center; margin-bottom: 20px;">
+            <!-- Imagem do filme à esquerda -->
+            <img src="@filme.FtCapaFilme" alt="@filme.Titulo" class="film-cover" style="width: 300px; height: auto; margin-right: 20px;" />
+
+            <!-- Detalhes do filme à direita da imagem -->
+            <div class="film-details" style="flex: 1;">
+                <h3>@filme.Titulo</h3>
+                <p><strong>Data de Lançamento:</strong> @filme.DtLancamento.ToString("dd/MM/yyyy")</p>
+                <p><strong>Diretor:</strong> @filme.Diretor</p>
+
+                <p><strong>Gêneros:</strong></p>
+                <ul>
+                    @foreach (var genero in filme.Genero)
+                    {
+                        <li>@genero.Nome</li>
+                    }
+                </ul>
+
+                <p><strong>Artistas:</strong></p>
+                <ul>
+                    @foreach (var artista in filme.Artista)
+                    {
+                        <li>@artista.Nome</li>
+                    }
+                </ul>
+
+                <p>@filme.Descricao</p>
+            </div>
+        </div>
+    }
 </div>
