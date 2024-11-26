@@ -6,9 +6,12 @@
 
 <h1>Artistas</h1>
 
-<p>
-    <a asp-action="Create">Novo Artista</a>
-</p>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        <a asp-action="Create">Novo Artista</a>
+    </p>
+}
 
 <div class="row justify-content-center">
     <div class="mt-2 col-md-4" text-center>
@@ -52,11 +55,14 @@
             <td>
                 <img src="@item.FtArtista" height="120" />
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                }
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                </td>
         </tr>
 }
     </tbody>

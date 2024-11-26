@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -70,8 +71,11 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Filmes/Create
-        public IActionResult Create()
+        [Authorize]
+
+        public IActionResult Create() 
         {
+
             // Traz a lista de Gêneros e Artistas
             ViewBag.Genero = new MultiSelectList(_context.Genero, "Id", "Nome");
             ViewBag.Artista = new MultiSelectList(_context.Artista, "Id", "Nome");
@@ -81,6 +85,7 @@ namespace ProjetoDAAW.Controllers
         // POST: Filmes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Create([Bind("Id,Titulo,Descricao,DtLancamento,Diretor,FtCapaFilme")] Filme filme, int[] generoSelecionados, int[] artistaSelecionados)
         {
             // remove validação de Genero e Artista pq a gente esqueceu de adicionar o "?" na list<>
@@ -120,6 +125,7 @@ namespace ProjetoDAAW.Controllers
 
 
         // GET: Filmes/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -215,6 +221,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Filmes/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
