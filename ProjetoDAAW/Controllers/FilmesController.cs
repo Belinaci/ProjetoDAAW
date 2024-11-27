@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ProjetoDAAW.Data;
@@ -31,7 +32,10 @@ namespace ProjetoDAAW.Controllers
             {
                 // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
                     filmes = await _context.Filme
-                    .Where(p=> (p.Titulo.Contains(Filtro) || p.Descricao.Contains(Filtro)) || p.Genero.Any(g => g.Nome.Contains(Filtro)))
+                    .Where(f => f.Titulo.Contains(Filtro) ||
+                        f.Descricao.Contains(Filtro) ||
+                        f.Genero.Any(g => g.Nome.Contains(Filtro)) ||
+                        f.Artista.Any(a => a.Nome.Contains(Filtro)))
                     .Include(f => f.Genero)
                     .Include(f => f.Artista)
                     .ToListAsync();

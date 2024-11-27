@@ -1,11 +1,29 @@
 ﻿@model IEnumerable<ProjetoDAAW.Models.Contato>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Feedback";
 }
 
-<h1>Index</h1>
+<div class="container mt-5 p-4 rounded shadow text-center" style="background-color: #f9f9f9; max-width: 600px;">
+    <!-- Título principal -->
+    <h1 class="display-4" style="color: #007BFF;">Dê seu Feedback</h1>
+    <p class="lead" style="color: #555;">Sua opinião é muito importante para nós! Deixe suas sugestões e ajude-nos a melhorar.</p>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <!-- Seção de destaque com imagem -->
+    <div class="mt-4">
+        <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/2249424-movie-cinema-vector-icon-symbol-for-website-and-mobile-app-gratis-vetor.jpg" alt="Feedback Icon" class="img-fluid mb-4" />
+    </div>
+
+    <!-- Botão estilizado para adicionar feedback -->
+    <div>
+        <a asp-action="Create" class="btn btn-lg btn-primary shadow-lg" style="padding: 12px 30px; font-size: 1.25rem; border-radius: 25px;">
+            <i class="bi bi-pencil-square"></i> Adicionar Feedback
+        </a>
+    </div>
+
+    <!-- Rodapé com mensagem -->
+    <div class="mt-5">
+        <p class="text-muted">Obrigado por compartilhar suas ideias e ajudar nosso time a crescer!</p>
+    </div>
+</div>
+
