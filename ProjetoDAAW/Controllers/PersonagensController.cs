@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
@@ -21,6 +22,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Personagens
+        [Authorize]
         public async Task<IActionResult> Index(string Filtro)
         {
             List<Personagem> personagens;
@@ -48,6 +50,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Personagens/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -68,6 +71,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Personagens/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewBag.Filme = new MultiSelectList(_context.Filme, "Id", "Titulo");
@@ -113,6 +117,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Personagens/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -164,6 +169,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Personagens/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
