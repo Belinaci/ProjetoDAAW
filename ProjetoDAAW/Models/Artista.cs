@@ -24,7 +24,7 @@ namespace ProjetoDAAW.Models
 
         public string FtArtista { get; set; }
 
-        public List<Filme> Filme { get; set; }
-        public List<Personagem> Personagem { get; set; }
+        public List<Filme>? Filme { get; set; }
+        public List<Personagem>? Personagem { get; set; }
     }
 }
