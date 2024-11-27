@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,12 +20,12 @@ namespace ProjetoDAAW.Controllers
             _context = context;
         }
 
-        // GET: Contatos7
+        // GET: Contatos
         public async Task<IActionResult> Index()
         {
             return View(await _context.Contato.ToListAsync());
         }
-
+        // Get: Contatos/Admin
         [Authorize]
         public async Task<IActionResult> Admin()
         {
@@ -61,13 +61,13 @@ namespace ProjetoDAAW.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Mensagem")] Contato contato)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Assunto,Mensagem")] Contato contato)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(contato);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Admin));
             }
             return View(contato);
         }
@@ -93,7 +93,7 @@ namespace ProjetoDAAW.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Mensagem")] Contato contato)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Assunto,Mensagem")] Contato contato)
         {
             if (id != contato.Id)
             {
@@ -118,7 +118,7 @@ namespace ProjetoDAAW.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Admin));
             }
             return View(contato);
         }
@@ -153,7 +153,7 @@ namespace ProjetoDAAW.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Admin));
         }
 
         private bool ContatoExists(int id)

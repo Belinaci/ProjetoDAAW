@@ -1,42 +1,67 @@
 ﻿@model ProjetoDAAW.Models.Artista
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes do Artista";
 }
 
-<h1>Details</h1>
+<h1>Detalhes do Artista</h1>
+
+<div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
+    <!-- Foto do artista à esquerda -->
+    <div style="flex-shrink: 0;">
+        <img src="@Model.FtArtista" alt="@Model.Nome" style="width: 300px; height: auto;" />
+    </div>
+
+    <!-- Informações do artista à direita -->
+    <div style="flex-grow: 1;">
+        <h2>@Model.Nome</h2>
+        <p><strong>Data de Nascimento:</strong> @Model.DtNascimento.ToString("dd/MM/yyyy")</p>
+        <p><strong>País:</strong> @Model.Pais</p>
+
+        <p>
+            <strong>Filmes:</strong>
+            @if (Model.Filme != null && Model.Filme.Any())
+            {
+                @foreach (var filme in Model.Filme)
+                {
+                    <span>@filme.Titulo</span>
+
+                    @(filme != Model.Filme.Last() ? ", " : "")
+                }
+            }
+            else
+            {
+                <span>Este artista ainda não possui filmes cadastrados.</span>
+            }
+        </p>
+
+        <p>
+            <strong>Personagens:</strong>
+            @if (Model.Personagem != null && Model.Personagem.Any())
+            {
+                @foreach (var personagem in Model.Personagem)
+                {
+                    <span>@personagem.Prsnag</span>
+
+                    @(personagem != Model.Personagem.Last() ? ", " : "")
+                }
+            }
+            else
+            {
+                <span>Este artista ainda não possui personagens cadastrados.</span>
+            }
+        </p>
+    </div>
+</div>
 
 <div>
-    <h4>Artista</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DtNascimento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DtNascimento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pais)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Pais)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FtArtista)
-        </dt>
-        <dd class = "col-sm-10">
-            <img src="@Model.FtArtista" height="120" />
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <p><a asp-controller="Home" class="btn btn-primary" asp-action="Index">Voltar aos Filmes Recém-Adicionados</a></p>
+
+    <p><a asp-action="Index" class="btn btn-primary">Voltar à Lista de Artistas</a></p>
+
+    <!-- Restrição de acesso para usuários não logados -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+    }
 </div>

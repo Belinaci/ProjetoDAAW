@@ -1,43 +1,63 @@
 ﻿@model ProjetoDAAW.Models.Contato
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Feedback";
 }
 
-<h1>Create</h1>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Crie seu Feedback</h1>
 
-<h4>Contato</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Mensagem" class="control-label"></label>
-                <input asp-for="Mensagem" class="form-control" />
-                <span asp-validation-for="Mensagem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h4 class="text-center mb-4">Formulário de Contato</h4>
+            <form asp-action="Create">
+                <!-- Exibição de erros de validação -->
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Nome -->
+                <div class="form-group mb-3">
+                    <label asp-for="Nome" class="form-label">Nome</label>
+                    <input asp-for="Nome" class="form-control" placeholder="Digite seu nome" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group mb-3">
+                    <label asp-for="Email" class="form-label">E-mail</label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Digite seu e-mail" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <!-- Assunto -->
+                <div class="form-group mb-3">
+                    <label asp-for="Assunto" class="form-label">Assunto</label>
+                    <input asp-for="Assunto" class="form-control" placeholder="Assunto do feedback" />
+                    <span asp-validation-for="Assunto" class="text-danger"></span>
+                </div>
+
+                <!-- Mensagem -->
+                <div class="form-group mb-4">
+                    <label asp-for="Mensagem" class="form-label">Mensagem</label>
+                    <textarea asp-for="Mensagem" class="form-control" rows="4" placeholder="Escreva sua mensagem"></textarea>
+                    <span asp-validation-for="Mensagem" class="text-danger"></span>
+                </div>
+
+                <!-- Botão de Submissão -->
+                <div class="form-group text-center">
+                    <input type="submit" value="Enviar Feedback" class="btn btn-primary btn-lg" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Link para voltar à lista -->
+    <div class="text-center mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

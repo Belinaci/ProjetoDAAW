@@ -1,36 +1,39 @@
 ﻿@model ProjetoDAAW.Models.Contato
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes do Feedback";
 }
 
-<h1>Details</h1>
+<div class="container mt-5" style="max-width: 600px;">
+    <!-- Título Principal -->
+    <h1 class="text-center mb-4" style="font-size: 2rem; color: #333;">Detalhes do Feedback</h1>
 
-<div>
-    <h4>Contato</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Mensagem)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Mensagem)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <!-- Informações do Feedback -->
+    <div class="p-4 rounded shadow-sm" style="background-color: #f9f9f9;">
+        <div class="mb-3">
+            <h5 style="color: #007BFF;">Nome</h5>
+            <p class="mb-0">@Model.Nome</p>
+        </div>
+
+        <div class="mb-3">
+            <h5 style="color: #007BFF;">E-mail</h5>
+            <p class="mb-0">@Model.Email</p>
+        </div>
+
+        <div class="mb-3">
+            <h5 style="color: #007BFF;">Assunto</h5>
+            <p class="mb-0">@Model.Assunto</p>
+        </div>
+
+        <div class="mb-3">
+            <h5 style="color: #007BFF;">Mensagem</h5>
+            <p class="mb-0">@Model.Mensagem</p>
+        </div>
+    </div>
+
+    <!-- Ações -->
+    <div class="text-center mt-4">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning me-2">Editar</a>
+        <a asp-action="Admin" class="btn btn-secondary">Voltar à Lista</a>
+    </div>
 </div>
