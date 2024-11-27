@@ -73,6 +73,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Contatos/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -124,6 +125,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Contatos/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

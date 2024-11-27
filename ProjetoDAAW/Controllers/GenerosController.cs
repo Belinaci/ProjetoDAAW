@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +21,14 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Generos
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Genero.ToListAsync());
         }
 
         // GET: Generos/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +47,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Generos/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -78,6 +82,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Generos/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -129,6 +134,7 @@ namespace ProjetoDAAW.Controllers
         }
 
         // GET: Generos/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
