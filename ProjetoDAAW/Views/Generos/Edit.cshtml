@@ -18,15 +18,12 @@
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:flex; gap:10px; margin-top:10px;">
                 <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Voltar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
 <h4>Filme</h4>
 <hr />
@@ -52,15 +52,12 @@
                 <input asp-for="FtCapaFilme" class="form-control" />
                 <span asp-validation-for="FtCapaFilme" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:flex; gap:10px; margin-top:10px;">
                 <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Voltar</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {

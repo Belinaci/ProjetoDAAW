@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Criar Novo Personagem</a>
+    <a asp-action="Create" class="btn btn-primary">Criar Novo Personagem</a>
 </p>
 <div class="row justify-content-center">
     <div class="mt-2 col-md-4" text-center>
@@ -44,11 +44,14 @@
                 <td>
                     <span>@item.Artista.Nome</span>
                 </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
-            </td>
+                <td>
+                    <div style ="display:flex; gap:10px; margin-top:10px;">
+
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Detalhes</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Deletar</a>
+                    </div>
+                </td>
         </tr>
 }
     </tbody>
