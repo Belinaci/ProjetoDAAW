@@ -8,7 +8,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <a asp-action="Create">Crie seu Novo Filme</a>
+    <a asp-action="Create" class="btn btn-primary">Crie seu Novo Filme</a>
 }
 <div class="row justify-content-center">
     <div class="mt-2 col-md-4" text-center>
@@ -94,10 +94,10 @@
                     <td>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Deletar</a>
                     }
-                        <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Detalhes</a>
                     </td>
 
         </tr>
