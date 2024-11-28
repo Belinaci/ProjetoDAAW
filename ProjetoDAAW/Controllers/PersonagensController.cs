@@ -183,6 +183,8 @@ namespace ProjetoDAAW.Controllers
             }
 
             var personagem = await _context.Personagem
+                .Include(a => a.Artista)
+                .Include(f => f.Filme)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (personagem == null)
             {
