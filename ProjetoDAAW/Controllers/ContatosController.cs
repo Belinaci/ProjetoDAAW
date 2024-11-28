@@ -26,7 +26,6 @@ namespace ProjetoDAAW.Controllers
             return View(await _context.Contato.ToListAsync());
         }
         // Get: Contatos/Admin
-        [Authorize]
         public async Task<IActionResult> Admin()
         {
             return View(await _context.Contato.ToListAsync());
@@ -67,7 +66,7 @@ namespace ProjetoDAAW.Controllers
             {
                 _context.Add(contato);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Admin));
+                return RedirectToAction(nameof(Index));
             }
             return View(contato);
         }

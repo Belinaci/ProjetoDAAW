@@ -9,7 +9,7 @@ namespace ProjetoDAAW.Models
     {
         public int Id { get; set; }
         [Required]
-        [RegularExpression(@"^[a-zA-Z\s]{5,}$", ErrorMessage = "O nome deve ser completo (mínimo de 5 caracteres).")]
+        [RegularExpression(@"^[a-zA-ZÀ-ÿ\s]{5,}$", ErrorMessage = "O nome deve ser completo (mínimo de 5 caracteres, incluindo caracteres acentuados).")]
         public string Nome { get; set; }
         [Required]
         [EmailAddress(ErrorMessage = "Insira um e-mail válido.")]

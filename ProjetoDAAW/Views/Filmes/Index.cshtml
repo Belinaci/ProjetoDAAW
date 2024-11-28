@@ -26,16 +26,10 @@
                 @Html.DisplayNameFor(model => model.Titulo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
                 Gêneros
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DtLancamento)
-            </th>
-            <th>
-                Atores
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Diretor)
@@ -53,9 +47,6 @@
                 @Html.DisplayFor(modelItem => item.Titulo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
                     @if (item.Genero != null)
                     {
                         foreach (var genero in item.Genero)
@@ -70,20 +61,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DtLancamento)
-            </td>
-            <td>
-                    @if (item.Artista != null)
-                    {
-                        @foreach (var artista in item.Artista)
-                        {
-                            <span>@artista.Nome</span>
-                            <br />
-                        }
-                    }
-                    else
-                    {
-                        <span>Sem Artista associado</span>
-                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Diretor)
