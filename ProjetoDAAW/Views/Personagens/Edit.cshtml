@@ -1,7 +1,7 @@
 ﻿@model ProjetoDAAW.Models.Personagem
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar";
 }
 
 <h1>Editar</h1>
@@ -13,29 +13,35 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+
             <div class="form-group">
                 <label asp-for="Prsnag" class="control-label"></label>
                 <input asp-for="Prsnag" class="form-control" />
                 <span asp-validation-for="Prsnag" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="FilmeId" class="control-label"></label>
-                <input asp-for="FilmeId" class="form-control" />
+                <select asp-for="FilmeId" class="form-control" asp-items="ViewBag.FilmeId"></select>
                 <span asp-validation-for="FilmeId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="ArtistaId" class="control-label"></label>
-                <input asp-for="ArtistaId" class="form-control" />
+                <select asp-for="ArtistaId" class="form-control" asp-items="ViewBag.ArtistaId"></select>
                 <span asp-validation-for="ArtistaId" class="text-danger"></span>
             </div>
+
             <div class="form-group" style="display:flex; gap:10px; margin-top:10px;">
                 <input type="submit" value="Salvar" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
             </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

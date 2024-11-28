@@ -130,6 +130,11 @@ namespace ProjetoDAAW.Controllers
             {
                 return NotFound();
             }
+
+                    // Popula os SelectLists para dropdowns
+                    ViewData["FilmeId"] = new SelectList(_context.Filme, "Id", "Titulo", personagem.FilmeId);
+                    ViewData["ArtistaId"] = new SelectList(_context.Artista, "Id", "Nome", personagem.ArtistaId);
+
             return View(personagem);
         }
 
