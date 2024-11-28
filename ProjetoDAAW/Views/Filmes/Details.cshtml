@@ -59,11 +59,11 @@
 <div>
 
     <p><a asp-controller="Home" class="btn btn-primary" asp-action="Index">Voltar nos Recém Adicionados</a></p>
-    <p><a asp-action="Index" class="btn btn-primary">Voltar à Lista de Filmes</a></p>
+    <p><a asp-action="Index" class="btn btn-secondary">Voltar à Lista de Filmes</a></p>
 
     <!-- Restrição de acesso para usuários não Logados -->
     @if (User.Identity.IsAuthenticated)
     {
-        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model?.Id">Editar</a>
+        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.Id">Editar</a>
     }
 </div>
