@@ -13,6 +13,7 @@
             <tr>
                 <th>@Html.DisplayNameFor(model => model.Nome)</th>
                 <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Assunto)</th>
                 <th>@Html.DisplayNameFor(model => model.Mensagem)</th>
                 <th class="text-center">Ações</th>
             </tr>
@@ -23,6 +24,7 @@
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Nome)</td>
                         <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Assunto)</td>
                         <td>@Html.DisplayFor(modelItem => item.Mensagem)</td>
                         <td class="text-center">
                             <!-- Botões de ação (editar, detalhes, excluir) -->

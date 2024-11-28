@@ -26,12 +26,14 @@ namespace ProjetoDAAW.Controllers
             return View(await _context.Contato.ToListAsync());
         }
         // Get: Contatos/Admin
+        [Authorize]
         public async Task<IActionResult> Admin()
         {
             return View(await _context.Contato.ToListAsync());
         }
 
         // GET: Contatos/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
