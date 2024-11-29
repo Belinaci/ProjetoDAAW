@@ -33,7 +33,6 @@ namespace ProjetoDAAW.Controllers
                 // Inclui os Gêneros e Filmes a serem mostrados no Index, lazy loading é um bastardo
                     filmes = await _context.Filme
                     .Where(f => f.Titulo.Contains(Filtro) ||
-                        f.Descricao.Contains(Filtro) ||
                         f.Genero.Any(g => g.Nome.Contains(Filtro)) ||
                         f.Artista.Any(a => a.Nome.Contains(Filtro)))
                     .Include(f => f.Genero)
