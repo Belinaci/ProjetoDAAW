@@ -101,3 +101,8 @@ O projeto foi desenvolvido utilizando o padrão MVC para organizar o código e t
 1. Clone o repositório:
    ```bash
    git clone https://github.com/Belinaci/ProjetoDAAW.git
+
+### Autoria
+[André Belinaci](https://github.com/Belinaci)
+[Gustavo Mozer](https://github.com/mozerbtww)
+[Leonardo Prestes](https://github.com/LeonardoPrestes05)
